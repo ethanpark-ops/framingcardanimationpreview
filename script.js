@@ -65,16 +65,53 @@ document.addEventListener("DOMContentLoaded", () => {
       }, { once: true });
 
       clone.addEventListener("click", () => {
-        // Remove from answer area with fade out
-        clone.style.opacity = "0";
-        clone.style.transform = "translateY(20px)";
-        setTimeout(() => {
+        // 1. Get initial position from clone
+        const currentRect = clone.getBoundingClientRect();
+        
+        // 2. Get target position (the original card)
+        const targetRect = card.getBoundingClientRect();
+        
+        // 3. Create flying card
+        const flyingBackCard = document.createElement("div");
+        flyingBackCard.className = card.className + " flying-card";
+        flyingBackCard.innerHTML = card.innerHTML;
+        flyingBackCard.style.position = 'fixed';
+        flyingBackCard.style.top = `${currentRect.top}px`;
+        flyingBackCard.style.left = `${currentRect.left}px`;
+        flyingBackCard.style.width = `${currentRect.width}px`;
+        flyingBackCard.style.height = `${currentRect.height}px`;
+        flyingBackCard.style.margin = '0';
+        flyingBackCard.style.zIndex = '1000';
+        flyingBackCard.style.pointerEvents = 'none';
+        flyingBackCard.style.transition = 'all 0.1s ease-out';
+        
+        document.body.appendChild(flyingBackCard);
+        
+        // Remove clone immediately (or hide it)
+        clone.style.visibility = 'hidden';
+
+        // Trigger animation
+        requestAnimationFrame(() => {
+          flyingBackBackCard_style_top = `${targetRect.top}px`;
+          flyingBackBackCard_style_left = `${targetRect.left}px`;
+          flyingBackBackCard_style_width = `${targetRect.width}px`;
+          flyingBackBackCard_style_height = `${targetRect.height}px`;
+          
+          // Using JS property assignment since template literals in replacement content can be tricky
+          flyingBackCard.style.top = flyingBackBackCard_style_top;
+          flyingBackCard.style.left = flyingBackBackCard_style_left;
+          flyingBackCard.style.width = flyingBackBackCard_style_width;
+          flyingBackCard.style.height = flyingBackBackCard_style_height;
+        });
+
+        flyingBackCard.addEventListener('transitionend', () => {
+          flyingBackCard.remove();
           clone.remove();
           // Re-enable original card
           card.classList.remove("disabled");
           selectedWords = selectedWords.filter((w) => w !== word);
           updateUI();
-        }, 150);
+        }, { once: true });
       });
 
       selectedWords.push(word);
