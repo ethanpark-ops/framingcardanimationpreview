@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framing - Learn</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Pretendard Font -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+  </head>
+  <body>
+    <div class="device-container">
+      <!-- Status Bar -->
+      <header class="status-bar">
+      </header>
+
+      <!-- Top App Bar -->
+      <nav class="top-app-bar">
+        <button class="icon-btn close-btn">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="#333333"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div class="title">프래이밍</div>
+        <button class="icon-btn settings-btn">
+          <img
+            src="http://localhost:3845/assets/b0fabafadadbb347b301dfe1dd19c453b9b30059.svg"
+            alt="Settings"
+          />
+        </button>
+      </nav>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bg"></div>
+        <div class="progress-fill" style="width: 30%"></div>
+      </div>
+
+      <main class="content">
+        <section class="instruction">
+          <h1>들은 내용을<br />순서대로 채워보세요</h1>
+          <button class="speaker-btn">
+            <img
+              src="http://localhost:3845/assets/f3ac0947727b1d12ba15ccaa0df329d3b52f0633.svg"
+              alt="Speaker"
+            />
+          </button>
+        </section>
+
+        <!-- Answer View -->
+        <div class="answer-view" id="answer-area">
+          <div class="answer-placeholder"></div>
+        </div>
+
+        <p class="secondary-instruction">내일 몇 시에 게임을 하나요?</p>
+
+        <!-- Word Selection Area -->
+        <div class="word-selection">
+          <div class="word-row">
+            <button class="word-card" data-word="します">します</button>
+            <button class="word-card" data-word="に">に</button>
+            <button class="word-card" data-word="を">を</button>
+            <button class="word-card" data-word="ゲイム">ゲイム</button>
+            <button class="word-card" data-word="は">は</button>
+          </div>
+          <div class="word-row">
+            <button class="word-card multi-line" data-word="明日は何時">
+              <span class="furigana"
+                >あした &nbsp;&nbsp;&nbsp;&nbsp; なんじ</span
+              >
+              <span class="kanji">明日は何時</span>
+            </button>
+            <button class="word-card" data-word="か">か</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer / Action Area -->
+      <footer class="footer">
+        <button class="action-btn" id="submit-btn" disabled>계속하기</button>
+        <div class="home-indicator"></div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
